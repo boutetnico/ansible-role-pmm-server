@@ -26,6 +26,7 @@ Role Variables
 |---------------------------------|----------|---------------------------------|-----------|--------------------------------------------------|
 | pmm_server_docker_image_name    | true     | `percona/pmm-server`            | string    | https://hub.docker.com/r/percona/pmm-server/tags |
 | pmm_server_docker_image_version | true     | `2.1.0`                         | string    |                                                  |
+| pmm_server_docker_env           | true     | `{}`                            | dict      |                                                  |
 | pmm_server_http_port            | true     | `80`                            | int       |                                                  |
 | pmm_server_https_port           | true     | `443`                           | int       |                                                  |
 | pmm_server_restart_policy       | true     | `unless-stopped`                | string    |                                                  |

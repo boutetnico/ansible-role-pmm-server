@@ -2,6 +2,8 @@
 pmm_server_docker_image_name: percona/pmm-server
 pmm_server_docker_image_version: 2.1.0
 
+pmm_server_docker_env: {}
+
 pmm_server_http_port: 80
 pmm_server_https_port: 443
 

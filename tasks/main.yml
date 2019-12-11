@@ -10,6 +10,7 @@
 
 - name: Ensure pmm-server container exists
   docker_container:
+    env: "{{ pmm_server_docker_env }}"
     image: "{{ pmm_server_docker_image_name }}:{{ pmm_server_docker_image_version }}"
     name: pmm-server
     ports:
