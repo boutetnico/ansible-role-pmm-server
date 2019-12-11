@@ -1,0 +1,21 @@
+---
+- name: Ensure pmm-data container exists
+  docker_container:
+    image: "{{ pmm_server_docker_image_name }}:{{ pmm_server_docker_image_version }}"
+    name: pmm-data
+    state: present
+    volumes:
+      - /srv
+    command: /bin/true
+
+- name: Ensure pmm-server container exists
+  docker_container:
+    image: "{{ pmm_server_docker_image_name }}:{{ pmm_server_docker_image_version }}"
+    name: pmm-server
+    ports:
+      - "{{ pmm_server_http_port }}:80"
+      - "{{ pmm_server_https_port }}:443"
+    restart_policy: "{{ pmm_server_restart_policy }}"
+    state: started
+    volumes_from:
+      - pmm-data
