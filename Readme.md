@@ -30,6 +30,7 @@ Role Variables
 | pmm_server_http_port            | true     | `80`                            | int       |                                                  |
 | pmm_server_https_port           | true     | `443`                           | int       |                                                  |
 | pmm_server_restart_policy       | true     | `unless-stopped`                | string    |                                                  |
+| pmm_server_anonymous_access     | true     | `false`                         | bool      | Enable or disable auth                           |
 
 Dependencies
 ------------

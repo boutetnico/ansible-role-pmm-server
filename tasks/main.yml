@@ -20,3 +20,13 @@
     state: started
     volumes_from:
       - pmm-data
+
+- name: Disable Grafana auth
+  shell: docker exec -t pmm-server sed -i '/# enable anonymous access/!b;n;cenabled = true' /etc/grafana/grafana.ini
+  notify: restart pmm-server
+  when: pmm_server_anonymous_access
+
+- name: Disable QAN auth
+  shell: docker exec -t pmm-server sed -i 's/auth_request \/auth_request;/# no auth_request/' /etc/nginx/conf.d/pmm.conf
+  notify: restart pmm-server
+  when: pmm_server_anonymous_access

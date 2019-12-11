@@ -8,3 +8,5 @@ pmm_server_http_port: 80
 pmm_server_https_port: 443
 
 pmm_server_restart_policy: unless-stopped
+
+pmm_server_anonymous_access: false
