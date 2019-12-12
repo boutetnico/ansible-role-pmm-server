@@ -1,0 +1,5 @@
+---
+- name: restart pmm-server
+  docker_container:
+    name: pmm-server
+    restart: true

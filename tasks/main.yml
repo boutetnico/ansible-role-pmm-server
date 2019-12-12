@@ -21,12 +21,27 @@
     volumes_from:
       - pmm-data
 
-- name: Disable Grafana auth
-  shell: docker exec -t pmm-server sed -i '/# enable anonymous access/!b;n;cenabled = true' /etc/grafana/grafana.ini
+- name: add pmm-server container to inventory
+  add_host:
+    name: pmm-server
+    ansible_connection: docker
+  changed_when: false
+  when: pmm_server_anonymous_access
+
+- name: Enable Grafana anonymous access
+  replace:
+    path: /etc/grafana/grafana.ini
+    regexp: '(# enable anonymous access\nenabled = )false'
+    replace: '\1true'
+  delegate_to: pmm-server
   notify: restart pmm-server
   when: pmm_server_anonymous_access
 
-- name: Disable QAN auth
-  shell: docker exec -t pmm-server sed -i 's/auth_request \/auth_request;/# no auth_request/' /etc/nginx/conf.d/pmm.conf
+- name: Disable auth at nginx level
+  replace:
+    path: /etc/nginx/conf.d/pmm.conf
+    regexp: '^(\s*)auth_request \/auth_request;$'
+    replace: '\1# no auth_request'
+  delegate_to: pmm-server
   notify: restart pmm-server
   when: pmm_server_anonymous_access
