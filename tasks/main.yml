@@ -22,17 +22,19 @@
       - pmm-data
 
 - name: Enable Grafana anonymous access
-  command: docker exec -t pmm-server sed -i '/# enable anonymous access/!{q100};b;n;cenabled = true' /etc/grafana/grafana.ini
-  register: result
-  changed_when: "result.rc != 100"
-  failed_when: "result.rc != 0 and result.rc != 100"
-  notify: restart pmm-server
+  command: >
+    docker exec -t pmm-server bash -c 'sed -i "/# enable anonymous access/!b;n;cenabled = true # Ansible edited" /etc/grafana/grafana.ini'
+  changed_when: false
   when: pmm_server_anonymous_access
 
 - name: Disable auth at nginx level
-  command: docker exec -t pmm-server sed -i '/auth_request \/auth_request;/!{q100};# no auth_request' /etc/nginx/conf.d/pmm.conf
-  register: result
-  changed_when: "result.rc != 100"
-  failed_when: "result.rc != 0 and result.rc != 100"
-  notify: restart pmm-server
+  command: docker exec -t pmm-server sed -i 's/auth_request \/auth_request;/# auth disabled by Ansible/g' /etc/nginx/conf.d/pmm.conf
+  changed_when: false
+  when: pmm_server_anonymous_access
+
+- name: Restart pmm-server
+  docker_container:
+    name: pmm-server
+    restart: true
+  changed_when: false
   when: pmm_server_anonymous_access
