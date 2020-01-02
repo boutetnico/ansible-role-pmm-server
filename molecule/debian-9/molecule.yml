@@ -1,0 +1,9 @@
+---
+scenario:
+  name: debian-9
+
+platforms:
+  - name: ansible-role-pmm-server-debian-9
+    image: debian:9
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

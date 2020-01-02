@@ -2,6 +2,12 @@
 language: python
 python: "2.7"
 
+env:
+  - SCENARIO=debian-9
+  - SCENARIO=debian-10
+  - SCENARIO=ubuntu-1604
+  - SCENARIO=ubuntu-1804
+
 sudo: required
 
 dist: trusty
@@ -13,4 +19,4 @@ install:
   - pip install molecule docker
 
 script:
-  - molecule test
+  - molecule --base-config molecule/shared/base.yml test --scenario-name $SCENARIO

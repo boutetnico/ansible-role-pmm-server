@@ -3,4 +3,3 @@
   hosts: all
   roles:
     - role: ansible-role-pmm-server
-      pmm_server_anonymous_access: true

@@ -1,0 +1,9 @@
+---
+scenario:
+  name: ubuntu-1804
+
+platforms:
+  - name: ansible-role-pmm-server-ubuntu-1804
+    image: ubuntu:18.04
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

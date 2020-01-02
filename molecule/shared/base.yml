@@ -1,20 +1,24 @@
 ---
 dependency:
   name: galaxy
+
 driver:
   name: docker
+
 lint:
   name: yamllint
-platforms:
-  - name: instance
-    image: docker:dind
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+
 provisioner:
   name: ansible
+  playbooks:
+    cleanup: ../shared/cleanup.yml
+    converge: ../shared/playbook.yml
+    prepare: ../shared/prepare.yml
   lint:
     name: ansible-lint
+
 verifier:
   name: testinfra
+  directory: ../shared/tests/
   lint:
     name: flake8
