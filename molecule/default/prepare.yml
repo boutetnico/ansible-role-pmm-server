@@ -1,0 +1,13 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: Install pip
+      apk:
+        name: py-pip
+        update_cache: yes
+
+    - name: Install docker python module
+      pip:
+        name: docker
+        state: present

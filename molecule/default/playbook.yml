@@ -1,17 +1,6 @@
 ---
 - name: Converge
   hosts: all
-  pre_tasks:
-    - name: install pip
-      apk:
-        name: py-pip
-        update_cache: yes
-
-    - name: install docker python module
-      pip:
-        name: docker
-        state: present
-
   roles:
     - role: ansible-role-pmm-server
       pmm_server_anonymous_access: true
