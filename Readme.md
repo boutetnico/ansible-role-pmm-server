@@ -3,8 +3,6 @@ ansible-role-pmm-server
 
 This role installs PMM server.
 
-[![Build Status](https://travis-ci.org/boutetnico/ansible-role-pmm-server.svg?branch=master)](https://travis-ci.org/boutetnico/ansible-role-pmm-server)
-
 Requirements
 ------------
 
@@ -17,7 +15,6 @@ Supported Platforms
 - [Debian - 10 (Buster)](https://wiki.debian.org/DebianBuster)
 - [Ubuntu - 16.04 (Xenial Xerus)](http://releases.ubuntu.com/16.04/)
 - [Ubuntu - 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04/)
-
 
 Role Variables
 --------------
@@ -49,13 +46,13 @@ Testing
 
 ## Debian
 
-`molecule --base-config molecule/shared/base.yml test --scenario-name debian-9`
-`molecule --base-config molecule/shared/base.yml test --scenario-name debian-10`
+    molecule --base-config molecule/shared/base.yml test --scenario-name debian-9
+    molecule --base-config molecule/shared/base.yml test --scenario-name debian-10
 
 ## Ubuntu
 
-`molecule --base-config molecule/shared/base.yml test --scenario-name ubuntu-1604`
-`molecule --base-config molecule/shared/base.yml test --scenario-name ubuntu-1804`
+    molecule --base-config molecule/shared/base.yml test --scenario-name ubuntu-1604
+    molecule --base-config molecule/shared/base.yml test --scenario-name ubuntu-1804
 
 License
 -------
