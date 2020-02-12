@@ -3,11 +3,7 @@ scenario:
   name: debian-10
 
 platforms:
-  - name: instance
-    image: debian:buster
-    command: /lib/systemd/systemd
-    privileged: true
-    env:
-      container: docker
+  - name: ansible-role-pmm-server-debian-10
+    image: debian:10
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /var/run/docker.sock:/var/run/docker.sock
