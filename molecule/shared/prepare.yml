@@ -5,7 +5,6 @@
     docker__package_dependencies:
       - "apt-transport-https"
       - "gnupg2"
-      - "python-backports.ssl-match-hostname"
     docker__apt_key_id: "9DC858229FC7DD38854AE2D88D81803C0EBFCD88"
     docker__apt_key_url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
     docker__apt_repository: >
@@ -14,7 +13,6 @@
       {{ ansible_distribution_release }} {{ docker__channel | join (' ') }}
     docker__channel: ["stable"]
     docker__pip_dependencies:
-      - "python-setuptools"
       - "python{{ '3' if ansible_python.version.major == 3 else '' }}-pip"
     docker__pip_packages:
       - docker
