@@ -1,7 +1,4 @@
 ---
-scenario:
-  name: ubuntu-1604
-
 platforms:
   - name: ansible-role-pmm-server-ubuntu-1604
     image: ubuntu:16.04
