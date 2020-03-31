@@ -22,7 +22,7 @@ Role Variables
 | Variable                        | Required | Default                 | Choices   | Comments                                         |
 |---------------------------------|----------|-------------------------|-----------|--------------------------------------------------|
 | pmm_server_docker_image_name    | true     | `percona/pmm-server`    | string    |                                                  |
-| pmm_server_docker_image_version | true     | `latest`                | string    |                                                  |
+| pmm_server_docker_image_version | true     | `2`                     | string    |                                                  |
 | pmm_server_docker_env           | true     | `{}`                    | dict      |                                                  |
 | pmm_server_http_port            | true     | `80`                    | int       |                                                  |
 | pmm_server_https_port           | true     | `443`                   | int       |                                                  |
