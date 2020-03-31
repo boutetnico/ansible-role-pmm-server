@@ -1,7 +1,7 @@
 ansible-role-pmm-server
 =======================
 
-This role installs PMM server.
+This role installs PMM server using the [official Docker image](https://hub.docker.com/r/percona/pmm-server).
 
 Requirements
 ------------
@@ -19,15 +19,15 @@ Supported Platforms
 Role Variables
 --------------
 
-| Variable                        | Required | Default                         | Choices   | Comments                                         |
-|---------------------------------|----------|---------------------------------|-----------|--------------------------------------------------|
-| pmm_server_docker_image_name    | true     | `percona/pmm-server`            | string    | https://hub.docker.com/r/percona/pmm-server/tags |
-| pmm_server_docker_image_version | true     | `2.2.0`                         | string    |                                                  |
-| pmm_server_docker_env           | true     | `{}`                            | dict      |                                                  |
-| pmm_server_http_port            | true     | `80`                            | int       |                                                  |
-| pmm_server_https_port           | true     | `443`                           | int       |                                                  |
-| pmm_server_restart_policy       | true     | `unless-stopped`                | string    |                                                  |
-| pmm_server_anonymous_access     | true     | `false`                         | bool      | Enable or disable auth                           |
+| Variable                        | Required | Default                 | Choices   | Comments                                         |
+|---------------------------------|----------|-------------------------|-----------|--------------------------------------------------|
+| pmm_server_docker_image_name    | true     | `percona/pmm-server`    | string    |                                                  |
+| pmm_server_docker_image_version | true     | `latest`                | string    |                                                  |
+| pmm_server_docker_env           | true     | `{}`                    | dict      |                                                  |
+| pmm_server_http_port            | true     | `80`                    | int       |                                                  |
+| pmm_server_https_port           | true     | `443`                   | int       |                                                  |
+| pmm_server_restart_policy       | true     | `unless-stopped`        | string    |                                                  |
+| pmm_server_anonymous_access     | true     | `false`                 | bool      | Enable or disable anonymous dashboard access.    |
 
 Dependencies
 ------------
