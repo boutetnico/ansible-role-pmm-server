@@ -4,8 +4,13 @@ pmm_server_docker_image_version: 2
 
 pmm_server_docker_env: {}
 
-pmm_server_http_port: 80
-pmm_server_https_port: 443
+pmm_server_network_mode: bridge
+
+pmm_server_ports:
+  - "80:80"
+  - "443:443"
+
+pmm_server_container_state: started
 
 pmm_server_restart_policy: unless-stopped
 

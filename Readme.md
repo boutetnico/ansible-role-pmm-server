@@ -19,15 +19,16 @@ Supported Platforms
 Role Variables
 --------------
 
-| Variable                        | Required | Default                 | Choices   | Comments                                         |
-|---------------------------------|----------|-------------------------|-----------|--------------------------------------------------|
-| pmm_server_docker_image_name    | true     | `percona/pmm-server`    | string    |                                                  |
-| pmm_server_docker_image_version | true     | `2`                     | string    |                                                  |
-| pmm_server_docker_env           | true     | `{}`                    | dict      |                                                  |
-| pmm_server_http_port            | true     | `80`                    | int       |                                                  |
-| pmm_server_https_port           | true     | `443`                   | int       |                                                  |
-| pmm_server_restart_policy       | true     | `unless-stopped`        | string    |                                                  |
-| pmm_server_anonymous_access     | true     | `false`                 | bool      | Enable or disable anonymous dashboard access.    |
+| Variable                        | Required | Default              | Choices | Comments                                           |
+|---------------------------------|----------|----------------------|---------|----------------------------------------------------|
+| pmm_server_docker_image_name    | true     | `percona/pmm-server` | string  |                                                    |
+| pmm_server_docker_image_version | true     | `2`                  | string  |                                                    |
+| pmm_server_docker_env           | true     | `{}`                 | dict    |                                                    |
+| pmm_server_network_mode         | true     | `bridge`             | string  | `bridge`, `host`, `none` or `container:<name|id>`. |
+| pmm_server_ports                | true     |                      | list    | See `defaults/main.yml`.                           |
+| pmm_server_container_state      | true     | `started`            | string  | `absent`, `present`, `stopped` or `started`.       |
+| pmm_server_restart_policy       | true     | `unless-stopped`     | string  |                                                    |
+| pmm_server_anonymous_access     | true     | `false`              | bool    | Enable or disable anonymous dashboard access.      |
 
 Dependencies
 ------------

@@ -15,11 +15,10 @@
     env: "{{ pmm_server_docker_env }}"
     image: "{{ pmm_server_docker_image_name }}:{{ pmm_server_docker_image_version }}"
     name: pmm-server
-    ports:
-      - "{{ pmm_server_http_port }}:80"
-      - "{{ pmm_server_https_port }}:443"
+    network_mode: "{{ pmm_server_network_mode }}"
+    ports: "{{ pmm_server_ports }}"
     restart_policy: "{{ pmm_server_restart_policy }}"
-    state: started
+    state: "{{ pmm_server_container_state }}"
     volumes_from:
       - pmm-data
 
