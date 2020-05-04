@@ -1,6 +1,8 @@
 ---
 - name: Ensure pmm-data container exists
   docker_container:
+    comparisons:
+      '*': ignore
     image: "{{ pmm_server_docker_image_name }}:{{ pmm_server_docker_image_version }}"
     name: pmm-data
     state: present
