@@ -1,9 +1,10 @@
 ---
 galaxy_info:
+  role_name: pmm_server
   author: Nicolas Boutet
   description: Install PMM server.
   license: MIT
-  min_ansible_version: 2.6
+  min_ansible_version: 2.7
   platforms:
     - name: Ubuntu
       versions:
@@ -11,9 +12,16 @@ galaxy_info:
         - bionic
     - name: Debian
       versions:
-        - stretch
         - buster
+        - stretch
   galaxy_tags:
+    - management
+    - metrics
+    - mongodb
+    - monitoring
+    - mysql
     - percona
+    - performance
     - pmm
+    - server
 dependencies: []

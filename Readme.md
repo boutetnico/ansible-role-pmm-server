@@ -1,3 +1,6 @@
+[![tests](https://github.com/boutetnico/ansible-role-pmm-server/workflows/Test%20ansible%20role/badge.svg)](https://github.com/boutetnico/ansible-role-pmm-server/actions?query=workflow%3A%22Test+ansible+role%22)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-boutetnico.pmm_server-blue.svg)](https://galaxy.ansible.com/boutetnico/pmm_server)
+
 ansible-role-pmm-server
 =======================
 
@@ -6,7 +9,7 @@ This role installs PMM server using the [official Docker image](https://hub.dock
 Requirements
 ------------
 
-Ansible 2.6 or newer.
+Ansible 2.7 or newer.
 
 Supported Platforms
 -------------------
