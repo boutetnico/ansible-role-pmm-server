@@ -4,7 +4,12 @@
 ansible-role-pmm-server
 =======================
 
-This role installs PMM server using the [official Docker image](https://hub.docker.com/r/percona/pmm-server).
+This role installs [PMM server](https://www.percona.com/doc/percona-monitoring-and-management/2.x/introduction.html) using the [official Docker image](https://hub.docker.com/r/percona/pmm-server).
+
+It is part of a family of Ansible roles allowing to setup and configure PMM:
+
+- [ansible-role-pmm-server](https://github.com/boutetnico/ansible-role-pmm-server)
+- [ansible-role-pmm-client](https://github.com/boutetnico/ansible-role-pmm-client)
 
 Requirements
 ------------
