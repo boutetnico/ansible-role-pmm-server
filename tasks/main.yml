@@ -17,10 +17,18 @@
     name: pmm-server
     network_mode: "{{ pmm_server_network_mode }}"
     ports: "{{ pmm_server_ports }}"
+    pull: "{{ pmm_server_docker_pull }}"
     restart_policy: "{{ pmm_server_restart_policy }}"
     state: "{{ pmm_server_container_state }}"
     volumes_from:
       - pmm-data
+
+- name: Remove dangling docker image
+  docker_prune:
+    images: true
+    images_filters:
+      dangling: true
+      label: "name={{ pmm_server_docker_image_name }}"  # noqa 206
 
 - name: Enable Grafana anonymous access
   command: >
