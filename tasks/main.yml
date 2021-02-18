@@ -28,7 +28,7 @@
     images: true
     images_filters:
       dangling: true
-      label: "name={{ pmm_server_docker_image_name }}"  # noqa 206
+      label: "name={{ pmm_server_docker_image_name }}"
 
 - name: Enable Grafana anonymous access
   command: >
