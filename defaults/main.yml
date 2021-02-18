@@ -1,6 +1,7 @@
 ---
 pmm_server_docker_image_name: percona/pmm-server
 pmm_server_docker_image_version: 2
+pmm_server_docker_pull: false
 
 pmm_server_docker_env: {}
 
