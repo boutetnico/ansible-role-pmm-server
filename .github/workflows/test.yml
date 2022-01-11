@@ -16,8 +16,8 @@ jobs:
     strategy:
       matrix:
         scenario:
-          - debian-9
           - debian-10
+          - debian-11
           - ubuntu-1804
           - ubuntu-2004
 
