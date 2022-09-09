@@ -1,6 +1,6 @@
 ---
 - name: Ensure pmm-data container exists
-  docker_container:
+  community.general.docker_container:
     comparisons:
       '*': ignore
     image: "{{ pmm_server_docker_image_name }}:{{ pmm_server_docker_image_version }}"
@@ -11,7 +11,7 @@
     command: /bin/true
 
 - name: Ensure pmm-server container exists
-  docker_container:
+  community.general.docker_container:
     env: "{{ pmm_server_docker_env }}"
     image: "{{ pmm_server_docker_image_name }}:{{ pmm_server_docker_image_version }}"
     name: pmm-server
@@ -24,24 +24,29 @@
       - pmm-data
 
 - name: Remove dangling docker image
-  docker_prune:
+  community.general.docker_prune:
     images: true
     images_filters:
       dangling: true
 
 - name: Enable Grafana anonymous access
-  command: >
-    docker exec -t pmm-server bash -c 'sed -i "/# enable anonymous access/!b;n;cenabled = true # Ansible edited" /etc/grafana/grafana.ini'
+  community.docker.docker_container_exec:
+    container: pmm-server
+    command: >
+      /bin/bash -c 'sed -i "/# enable anonymous access/!b;n;cenabled = true # Ansible edited" /etc/grafana/grafana.ini'
   changed_when: false
   when: pmm_server_anonymous_access
 
 - name: Disable auth at nginx level
-  command: docker exec -t pmm-server sed -i 's/auth_request \/auth_request;/# auth disabled by Ansible/g' /etc/nginx/conf.d/pmm.conf
+  community.docker.docker_container_exec:
+    container: pmm-server
+    command: >
+      /bin/bash -c "sed -i 's/auth_request \/auth_request;/# auth disabled by Ansible/g' /etc/nginx/conf.d/pmm.conf"
   changed_when: false
   when: pmm_server_anonymous_access
 
 - name: Restart pmm-server
-  docker_container:
+  community.general.docker_container:
     name: pmm-server
     restart: true
   changed_when: false
