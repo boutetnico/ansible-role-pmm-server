@@ -18,8 +18,8 @@ jobs:
         scenario:
           - debian-10
           - debian-11
-          - ubuntu-1804
           - ubuntu-2004
+          - ubuntu-2204
 
     steps:
       - uses: actions/checkout@v2

@@ -4,12 +4,12 @@
   connection: local
   gather_facts: false
   tasks:
-    - name: delete pmm-server container
-      docker_container:
+    - name: Delete pmm-server container
+      community.general.docker_container:
         name: pmm-server
         state: absent
 
-    - name: delete pmm-data container
-      docker_container:
+    - name: Delete pmm-data container
+      community.general.docker_container:
         name: pmm-data
         state: absent

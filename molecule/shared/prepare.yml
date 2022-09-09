@@ -19,27 +19,27 @@
 
   tasks:
     - name: Install Docker's dependencies
-      apt:
+      ansible.builtin.apt:
         name: "{{ docker__package_dependencies + docker__pip_dependencies }}"
         update_cache: true
 
     - name: Add Docker's public GPG key to the APT keyring
-      apt_key:
+      ansible.builtin.apt_key:
         id: "{{ docker__apt_key_id }}"
         url: "{{ docker__apt_key_url }}"
 
     - name: Configure Docker's upstream APT repository
-      apt_repository:
+      ansible.builtin.apt_repository:
         repo: "{{ docker__apt_repository }}"
         update_cache: true
 
     - name: Install Docker
-      apt:
+      ansible.builtin.apt:
         name: docker-ce
         state: present
 
     - name: Install Python packages
-      pip:
+      ansible.builtin.pip:
         name: "{{ item }}"
         state: present
       loop: "{{ docker__pip_packages }}"
