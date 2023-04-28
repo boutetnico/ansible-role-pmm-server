@@ -16,9 +16,7 @@ jobs:
     strategy:
       matrix:
         scenario:
-          - debian-10
           - debian-11
-          - ubuntu-2004
           - ubuntu-2204
 
     steps:
@@ -33,7 +31,7 @@ jobs:
         run: sudo apt-get remove --purge -y ansible
 
       - name: Install dependencies
-        run: pip install ansible ansible-lint docker flake8 molecule molecule-docker pytest-testinfra
+        run: pip install ansible ansible-lint docker molecule molecule-plugins[docker] pytest-testinfra black
 
       - name: Display versions
         run: |
@@ -41,6 +39,13 @@ jobs:
           pip --version
           ansible --version
           molecule --version
+
+      - name: Lint code
+        run: |
+          ansible-lint
+          black --check .
+        env:
+          PY_COLORS: "1"
 
       - name: Run Molecule
         run: molecule --base-config molecule/shared/base.yml test --scenario-name ${{ matrix.scenario }}

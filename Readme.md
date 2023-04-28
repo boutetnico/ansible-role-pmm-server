@@ -19,9 +19,7 @@ Ansible 2.10 or newer.
 Supported Platforms
 -------------------
 
-- [Debian - 10 (Buster)](https://wiki.debian.org/DebianBuster)
 - [Debian - 11 (Bullseye)](https://wiki.debian.org/DebianBullseye)
-- [Ubuntu - 20.04 (Focal Fossa)](http://releases.ubuntu.com/20.04/)
 - [Ubuntu - 22.04 (Jammy Jellyfish)](http://releases.ubuntu.com/22.04/)
 
 Role Variables
@@ -56,13 +54,11 @@ Testing
 
 ## Debian
 
-    molecule --base-config molecule/shared/base.yml test --scenario-name debian-10
     molecule --base-config molecule/shared/base.yml test --scenario-name debian-11
 
 ## Ubuntu
 
-    molecule --base-config molecule/shared/base.yml test --scenario-name ubuntu-1804
-    molecule --base-config molecule/shared/base.yml test --scenario-name ubuntu-2004
+    molecule --base-config molecule/shared/base.yml test --scenario-name ubuntu-2204
 
 License
 -------
