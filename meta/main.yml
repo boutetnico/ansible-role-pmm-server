@@ -9,12 +9,10 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - focal
         - jammy
     - name: Debian
       versions:
         - bullseye
-        - buster
   galaxy_tags:
     - management
     - metrics
