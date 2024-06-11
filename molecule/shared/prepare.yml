@@ -13,7 +13,7 @@
       {{ ansible_distribution_release }} {{ docker__channel | join (' ') }}
     docker__channel: ["stable"]
     docker__pip_dependencies:
-      - "python{{ '3' if ansible_python.version.major == 3 else '' }}-pip"
+      - "python3-pip"
     docker__pip_packages:
       - docker
 
@@ -43,3 +43,12 @@
         name: "{{ item }}"
         state: present
       loop: "{{ docker__pip_packages }}"
+      when: ansible_distribution_release != 'bookworm'
+
+    - name: Install Python packages
+      ansible.builtin.pip:
+        name: "{{ item }}"
+        state: present
+        extra_args: --break-system-packages
+      loop: "{{ docker__pip_packages }}"
+      when: ansible_distribution_release == 'bookworm'
