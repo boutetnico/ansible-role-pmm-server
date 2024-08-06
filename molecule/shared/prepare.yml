@@ -2,53 +2,41 @@
 - name: Prepare
   hosts: all
   vars:
-    docker__package_dependencies:
-      - "apt-transport-https"
-      - "gnupg2"
-    docker__apt_key_id: "9DC858229FC7DD38854AE2D88D81803C0EBFCD88"
-    docker__apt_key_url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
-    docker__apt_repository: >
-      deb [arch=amd64]
-      https://download.docker.com/linux/{{ ansible_distribution | lower }}
-      {{ ansible_distribution_release }} {{ docker__channel | join (' ') }}
-    docker__channel: ["stable"]
-    docker__pip_dependencies:
-      - "python3-pip"
-    docker__pip_packages:
-      - docker
+    docker_apt_signed_by: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
+    docker_apt_uris: "https://download.docker.com/linux/{{ ansible_distribution | lower }}"
+    docker_architecture_map:
+      "x86_64": "amd64"
+      "aarch64": "arm64"
+      "aarch": "arm64"
+      "armhf": "armhf"
+      "armv7l": "armhf"
+
+    docker_dependencies:
+      - apt-transport-https
+      - gnupg2
+      - python3-debian
+      - python3-docker
+    docker_packages:
+      - docker-ce-cli
+    docker_package_state: present
 
   tasks:
-    - name: Install Docker's dependencies
+    - name: Install Docker dependencies
       ansible.builtin.apt:
-        name: "{{ docker__package_dependencies + docker__pip_dependencies }}"
+        name: "{{ docker_dependencies }}"
         update_cache: true
 
-    - name: Add Docker's public GPG key to the APT keyring
-      ansible.builtin.apt_key:
-        id: "{{ docker__apt_key_id }}"
-        url: "{{ docker__apt_key_url }}"
-
-    - name: Configure Docker's upstream APT repository
-      ansible.builtin.apt_repository:
-        repo: "{{ docker__apt_repository }}"
-        update_cache: true
+    - name: Configure Docker APT repository
+      ansible.builtin.deb822_repository:
+        architectures: "{{ docker_architecture_map[ansible_architecture] }}"
+        components: stable
+        name: docker
+        signed_by: "{{ docker_apt_signed_by }}"
+        suites: "{{ ansible_distribution_release }}"
+        uris: "{{ docker_apt_uris }}"
 
     - name: Install Docker
       ansible.builtin.apt:
-        name: docker-ce
-        state: present
-
-    - name: Install Python packages
-      ansible.builtin.pip:
-        name: "{{ item }}"
-        state: present
-      loop: "{{ docker__pip_packages }}"
-      when: ansible_distribution_release != 'bookworm'
-
-    - name: Install Python packages
-      ansible.builtin.pip:
-        name: "{{ item }}"
-        state: present
-        extra_args: --break-system-packages
-      loop: "{{ docker__pip_packages }}"
-      when: ansible_distribution_release == 'bookworm'
+        name: "{{ docker_packages }}"
+        state: "{{ docker_package_state }}"
+        update_cache: true
