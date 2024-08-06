@@ -1,0 +1,6 @@
+---
+platforms:
+  - name: ansible-role-pmm-server-ubuntu-2404
+    image: ubuntu:24.04
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
