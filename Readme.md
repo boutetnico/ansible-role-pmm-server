@@ -4,7 +4,7 @@
 ansible-role-pmm-server
 =======================
 
-This role installs [PMM server](https://www.percona.com/doc/percona-monitoring-and-management/2.x/introduction.html) using the [official Docker image](https://hub.docker.com/r/percona/pmm-server).
+This role installs [PMM server](https://docs.percona.com/percona-monitoring-and-management/3/) using the [official Docker image](https://hub.docker.com/r/percona/pmm-server).
 
 It is part of a family of Ansible roles allowing to setup and configure PMM:
 
@@ -30,7 +30,7 @@ Role Variables
 | Variable                        | Required | Default              | Choices | Comments                                           |
 |---------------------------------|----------|----------------------|---------|----------------------------------------------------|
 | pmm_server_docker_image_name    | true     | `percona/pmm-server` | string  |                                                    |
-| pmm_server_docker_image_version | true     | `2`                  | string  |                                                    |
+| pmm_server_docker_image_version | true     | `3`                  | string  |                                                    |
 | pmm_server_docker_pull          | true     | `false`              | boolean | Set `true` to force pulling a newer Docker image.  |
 | pmm_server_docker_env           | true     | `{}`                 | dict    |                                                    |
 | pmm_server_network_mode         | true     | `bridge`             | string  | `bridge`, `host`, `none` or `container:<name|id>`. |
