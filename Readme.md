@@ -32,7 +32,7 @@ Role Variables
 | pmm_server_docker_image_name    | true     | `percona/pmm-server` | string  |                                                    |
 | pmm_server_docker_image_version | true     | `3`                  | string  |                                                    |
 | pmm_server_docker_pull          | true     | `false`              | boolean | Set `true` to force pulling a newer Docker image.  |
-| pmm_server_docker_env           | true     | `{}`                 | dict    |                                                    |
+| pmm_server_docker_env           | true     |                      | dict    | See `defaults/main.yml`.                           |
 | pmm_server_network_mode         | true     | `bridge`             | string  | `bridge`, `host`, `none` or `container:<name|id>`. |
 | pmm_server_ports                | true     |                      | list    | See `defaults/main.yml`.                           |
 | pmm_server_container_state      | true     | `started`            | string  | `absent`, `present`, `stopped` or `started`.       |

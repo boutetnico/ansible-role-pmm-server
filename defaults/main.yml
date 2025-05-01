@@ -3,7 +3,8 @@ pmm_server_docker_image_name: percona/pmm-server
 pmm_server_docker_image_version: 3
 pmm_server_docker_pull: false
 
-pmm_server_docker_env: {}
+pmm_server_docker_env:
+  DISABLE_TELEMETRY: "1"
 
 pmm_server_network_mode: bridge
 
