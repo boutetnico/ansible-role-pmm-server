@@ -1,14 +1,14 @@
-[![tests](https://github.com/boutetnico/ansible-role-pmm-server/workflows/Test%20ansible%20role/badge.svg)](https://github.com/boutetnico/ansible-role-pmm-server/actions?query=workflow%3A%22Test+ansible+role%22)
-[![Ansible Galaxy](https://img.shields.io/badge/galaxy-boutetnico.pmm_server-blue.svg)](https://galaxy.ansible.com/boutetnico/pmm_server)
+[![tests](https://github.com/boutetnico/ansible-role-percona-pmm-server/workflows/Test%20ansible%20role/badge.svg)](https://github.com/boutetnico/ansible-role-percona-pmm-server/actions?query=workflow%3A%22Test+ansible+role%22)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-boutetnico.percona_pmm_server-blue.svg)](https://galaxy.ansible.com/boutetnico/percona_pmm_server)
 
-ansible-role-pmm-server
-=======================
+ansible-role-percona-pmm-server
+===============================
 
 This role installs [PMM server](https://docs.percona.com/percona-monitoring-and-management/3/) using the [official Docker image](https://hub.docker.com/r/percona/pmm-server).
 
 It is part of a family of Ansible roles allowing to setup and configure PMM:
 
-- [ansible-role-pmm-server](https://github.com/boutetnico/ansible-role-pmm-server)
+- [ansible-role-percona-pmm-server](https://github.com/boutetnico/ansible-role-percona-pmm-server)
 - [ansible-role-pmm-client](https://github.com/boutetnico/ansible-role-pmm-client)
 
 Requirements
@@ -49,7 +49,7 @@ Example Playbook
 
     - hosts: all
       roles:
-        - role: ansible-role-pmm-server
+        - role: ansible-role-percona-pmm-server
 
 Testing
 -------

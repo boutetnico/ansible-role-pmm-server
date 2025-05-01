@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: pmm_server
+  role_name: percona_pmm_server
   namespace: boutetnico
   author: Nicolas Boutet
   description: Install PMM server.

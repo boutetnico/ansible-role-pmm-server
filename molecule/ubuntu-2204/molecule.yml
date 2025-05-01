@@ -1,6 +1,6 @@
 ---
 platforms:
-  - name: ansible-role-pmm-server-ubuntu-2204
+  - name: ansible-role-percona-pmm-server-ubuntu-2204
     image: ubuntu:22.04
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
