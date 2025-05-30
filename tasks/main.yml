@@ -27,7 +27,8 @@
   community.general.docker_prune:
     images: true
     images_filters:
-      dangling: true
+      dangling: false
+      label: "org.opencontainers.image.title=Percona Monitoring and Management"
 
 - name: Enable Grafana anonymous access
   community.docker.docker_container_exec:
